@@ -18,11 +18,11 @@ pipeline {
             }
         }
 
-        stage('Package') {
-            steps {
-                sh 'tar czf app.tar.gz node_modules index.js package.json' // adjust if needed
-            }
-        }
+       stage('Package') {
+    steps {
+        sh 'tar czf app.tar.gz node_modules server.js package.json'
+    }
+}
 
         stage('Deploy') {
             steps {
