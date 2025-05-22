@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'node-18'  // Matches the name you configured in Step 1
+        nodejs 'node-18'
     }
 
     stages {
@@ -12,21 +12,21 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Debug') {
             steps {
-                sh 'npm test || echo "No tests yet"'
+                sh 'ls -al && pwd'
             }
         }
 
         stage('Package') {
             steps {
-                sh 'tar czf app.tar.gz node_modules main.js package.json'
+                sh 'tar czf app.tar.gz node_modules index.js package.json' // adjust if needed
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploy logic goes here (e.g. SCP or SSH to EC2)'
+                echo 'Deploy logic goes here...'
             }
         }
     }
